@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/assets/jquery-1.12.4.min.js"></script>
+</head>
+
+<body>
+    <form id="form" action="/add">
+        <input type="hidden" name="id" id="">
+        <label for="name">请输入美剧名称</label>
+        <input type="text" name="name">
+        <label for="url">请输入对应网址</label>
+        <input type="text" name="url">
+        <button type="submit">添加</button>
+    </form>
+
+
+    <br>
+    <br>
+
+    <!-- <img src="/assets/1.jpg" alt=""> -->
+    <script>
+        $(function () {
+            $("#form").on('submit', function (e) {
+                console.log($(this).serialize());
+                
+                e.preventDefault()
+                $.ajax({
+                    url: '/add',
+                    type: 'post',
+                    dataType: 'json',
+                    data: $(this).serialize(),
+                    success: function (result) {
+                        console.log(result);
+
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
