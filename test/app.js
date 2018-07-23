@@ -1,17 +1,17 @@
 const http = require('http')
 const server = http.createServer()
+const template = require('art-template')
 const url = require('url')
+const fs = require('fs')
 const querystring = require('querystring')
 const path = require('path')
-const handler = require('./handler/handler')
-const template = require('art-template')
 
-
-module.exports = function (req, res) {
+server.on('request', function (req, res) {
     const method = req.method.toLowerCase()
 
     if (method === 'get' && req.url === '/') {
-        handler.showIndexpage(req, res)
+        let htmlStr = template(__dirname + '/views/index.html', {})
+        res.end(htmlStr)
     } else if (method === 'post' && req.url === '/add') {
         let data = ''
 
@@ -46,4 +46,9 @@ module.exports = function (req, res) {
             res.end(buf)
         })
     }
-}
+
+
+})
+server.listen(3000, function () {
+    console.log('http://127.0.0.1:3000');
+})
