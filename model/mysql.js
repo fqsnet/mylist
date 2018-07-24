@@ -7,22 +7,15 @@ const connection = mysql.createConnection({
     database: 'data' // 操作哪个数据库
 })
 
-// let input = {
-//     name:'西部世界2',
-//     url:'http://zmz003.com/F2wih3'
-// }
-
-// var sql = 'insert into list set ?'
-// connection.query(sql,input,(err,results)=>{
-//     console.log(results);
-    
-// })
-
 module.exports = {
     addInfo(info,callback){    
         console.log(info);
             
         var sql = 'insert into list set ?'
         connection.query(sql, info, callback)
+    },
+    showList(callback){
+        var sql = 'select * from list'
+        connection.query(sql,callback)
     }
-}
+} 
