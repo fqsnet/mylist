@@ -39,6 +39,15 @@
         .tableLayout td {
             text-align: center
         }
+        .tableLayout tr:hover{
+            background-color: #eff3f3
+        }
+        .tableLayout tr .btn-danger{
+            visibility: hidden
+        }
+        .tableLayout tr:hover .btn-danger{
+            visibility: visible
+        }
     </style>
 </head>
 
@@ -56,7 +65,7 @@
             </div>
         </form>
 
-        <table class="table table-hover tableLayout" id="datalist">
+        <table class="table tableLayout" id="datalist">
 
 
         </table>
@@ -65,6 +74,7 @@
         <tr>
             <th>id</th>
             <th>名称</th>
+            <th>url</th>
             <th>更新时间</th>
             <th>操作</th>
         </tr>
@@ -73,6 +83,7 @@
             <td>{{item.id}}</td>
             <td>{{item.name}}</td>
             <td>{{item.url}}</td>
+            <td></td>
             <td>
                 <button type="button" class="btn btn-danger">删除</button>
             </td>
